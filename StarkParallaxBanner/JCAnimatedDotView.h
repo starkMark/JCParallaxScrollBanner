@@ -8,8 +8,9 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "JCAbstractDotView.h"
 
-@interface JCParallaxCollectionLayout : UICollectionViewLayout
-@property (nonatomic,assign) CGSize parallaxItemSize;
+@interface JCAnimatedDotView : JCAbstractDotView
+@property (nonatomic, strong) UIColor *dotColor;
+
 @end
