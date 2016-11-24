@@ -55,9 +55,12 @@
     return self;
 }
 
-+ (instancetype)parallaxBannerViewWithFrame:(CGRect)frame imageURLArray:(NSArray *)imageURLArray{
++ (instancetype)parallaxBannerViewWithFrame:(CGRect)frame placeholderImage:(UIImage *)placeholderImage imageURLArray:(NSArray *)imageURLArray{
     JCParallaxBanner *parallaxBanner = [[JCParallaxBanner alloc]initWithFrame:frame];
-    parallaxBanner.imageURLArray = [NSMutableArray arrayWithArray:imageURLArray];;
+    parallaxBanner.imageURLArray = [NSMutableArray arrayWithArray:imageURLArray];
+    if (placeholderImage) {
+        parallaxBanner.placeholderImage = placeholderImage;
+    }
     return parallaxBanner;
 }
 
@@ -366,19 +369,26 @@
 #pragma mark - PageControl
 - (void)initPageControl{
     CGSize size = CGSizeZero;
+    
     if ([self.pageControl isKindOfClass:[JCAnimatedPageControl class]]) {
         JCAnimatedPageControl *pageControl = (JCAnimatedPageControl *)_pageControl;
         size = [pageControl sizeForNumberOfPages:self.imageViewArray.count];
+        
     } else {
         size = CGSizeMake(self.imageViewArray.count * self.dotSize.width * 1.2, self.dotSize.height);
+        
     }
+    
     CGFloat x = (self.frame.size.width - size.width) * 0.5;
+    
     if (self.pageControlAliment == JCPageContolAlimentRight) {
         x = self.parallaxCollectionView.frame.size.width - size.width - 10;
     }
+    
     CGFloat y = self.parallaxCollectionView.frame.size.height - size.height - 10;
     
     if ([self.pageControl isKindOfClass:[JCAnimatedPageControl class]]) {
+        
         JCAnimatedPageControl *pageControl = (JCAnimatedPageControl *)_pageControl;
         [pageControl sizeToFit];
     }

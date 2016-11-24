@@ -91,8 +91,9 @@ typedef enum {
 @property (nonatomic, assign) JCPageContolAliment pageControlAliment;
 
 /**
- ** imageURLArray ：网络图片URL数组
+ *  imageURLArray ：网络图片URL数组
+ *  placeholderImage : 占位图
  */
-+ (instancetype)parallaxBannerViewWithFrame:(CGRect)frame imageURLArray:(NSArray *)imageURLArray;
++ (instancetype)parallaxBannerViewWithFrame:(CGRect)frame placeholderImage:(UIImage *)placeholderImage imageURLArray:(NSArray *)imageURLArray;
 
 @end

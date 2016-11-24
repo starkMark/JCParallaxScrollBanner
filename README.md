@@ -1,11 +1,12 @@
 # JCParallaxScrollBanner
 iOS OC Banner Parallax (视差无限轮播)
 迅速集成 视差特效 无限轮播
+
 1.引用头文件并遵守协议
 
 	#import "JCParallaxBanner.h"
 	<JCBannerDelegate>
-2.初始化
+2.初始化 设置占位图 placeholderImage  网络图片数组
 
 	NSArray *urlArr = @[
 	@"http://www.jc.com/site/about/upload/cms/56a8785e6672a.jpg",
@@ -14,7 +15,9 @@ iOS OC Banner Parallax (视差无限轮播)
 	@"http://www.jc.com/site/about/upload/cms/5656d844ccc40.jpg"];
 	
 	JCParallaxBanner *banner = [JCParallaxBanner parallaxBannerViewWithFrame:
-	CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200) imageURLArray:urlArr]; 
+	CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200) 
+	placeholderImage:nil
+	imageURLArray:urlArr]; 
     
     banner.bannerDelegate = self;
     
